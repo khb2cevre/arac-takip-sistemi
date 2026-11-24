@@ -28,15 +28,15 @@ export default function LoginPage() {
       return
     }
 
-    // Giriş başarılıysa kullanıcı bilgilerini tarayıcı hafızasına kaydet
+        // Giriş başarılıysa kullanıcı bilgilerini tarayıcı hafızasına kaydet
     localStorage.setItem('currentUser', JSON.stringify(data))
     console.log("Giriş başarılı, yönlendiriliyor...")
     
-    // Rolüne göre yönlendir (window.location kullanarak tam sayfa yenilemesi yapıyoruz)
+    // Rolüne göre yönlendir (router.push kullanarak)
     if (data.role === 'admin') {
-      window.location.href = '/admin' // Yönetici paneline gidecek (henüz yapmadık)
+      router.push('/admin') 
     } else {
-      window.location.href = '/driver' // Şoför paneline gidecek
+      router.push('/driver') 
     }
     
     setLoading(false)
