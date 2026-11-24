@@ -66,7 +66,7 @@ export default function DriverPage() {
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser')
-    window.location.href = '/' 
+    window.location.href = '/arac-takip-sistemi/' 
   }
 
   const handleStartTrip = async (e: React.FormEvent) => {
