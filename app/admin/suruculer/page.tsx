@@ -65,7 +65,7 @@ export default function SuruculerPage() {
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser')
-    window.location.href = '/'
+    window.location.href = '/arac-takip-sistemi/'
   }
 
   if (loading) return <div className="min-h-screen flex items-center justify-center">Yükleniyor...</div>
