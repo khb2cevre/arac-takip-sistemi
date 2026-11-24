@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: "export",
+  basePath: "/arac-takip-sistemi",
+  images: {
+    unoptimized: true,
+  },
   experimental: {
     agentFeedback: true,
   },
@@ -18,3 +23,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+```[cite: 1, 6]
