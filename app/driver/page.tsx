@@ -18,7 +18,7 @@ export default function DriverPage() {
   // Dönüş Formu State
   const [returnKm, setReturnKm] = useState('')
   const [fuelPurchased, setFuelPurchased] = useState('Hayır')
-  const [fuelCost, setFuelCost] = useState('')
+  const [fuelAmount, setFuelAmount] = useState('')
 
   useEffect(() => {
     const initData = async () => {
@@ -106,7 +106,7 @@ export default function DriverPage() {
       return_time: new Date().toISOString(),
       return_km: parseInt(returnKm),
       fuel_purchased: fuelPurchased === 'Evet',
-      fuel_cost: fuelPurchased === 'Evet' ? parseFloat(fuelCost) : 0,
+fuel_amount: fuelPurchased === 'Evet' ? parseFloat(fuelAmount) : 0,
       status: 'Döndü'
     }).eq('id', activeTrip.id)
 
@@ -166,9 +166,9 @@ export default function DriverPage() {
                 
                 {fuelPurchased === 'Evet' && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Yakıt Tutarı (TL) *</label>
-                    <input type="number" step="0.01" required value={fuelCost} onChange={(e) => setFuelCost(e.target.value)} className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none" placeholder="Örn: 1500.50" />
-                  </div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">Yakıt Miktarı (Litre) *</label>
+  <input type="number" step="0.01" required value={fuelAmount} onChange={(e) => setFuelAmount(e.target.value)} className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none" placeholder="Örn: 45.5" />
+</div>
                 )}
               </div>
 
