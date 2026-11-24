@@ -25,7 +25,7 @@ export default function DriverPage() {
       try {
         const currentUserStr = localStorage.getItem('currentUser')
         if (!currentUserStr) {
-          window.location.href = '/' 
+          window.location.href = '/arac-takip-sistemi/' 
           return
         }
         const parsedUser = JSON.parse(currentUserStr)
