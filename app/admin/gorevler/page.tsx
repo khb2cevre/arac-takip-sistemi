@@ -71,7 +71,7 @@ export default function GorevKayitlari() {
       "Dönüş KM": trip.return_km || '-',
       "Yapılan KM": trip.return_km ? (trip.return_km - trip.exit_km) : '-',
       "Yakıt Alındı mı?": trip.fuel_purchased ? "Evet" : "Hayır",
-      "Yakıt Tutarı (TL)": trip.fuel_cost > 0 ? trip.fuel_cost : '-',
+      "Yakıt Miktarı (Lt)": trip.fuel_amount > 0 ? trip.fuel_amount : '-',
       "Durum": trip.status
     }))
 
@@ -157,7 +157,7 @@ export default function GorevKayitlari() {
                     <th className="p-4 font-medium">Çıkış</th>
                     <th className="p-4 font-medium">Dönüş</th>
                     <th className="p-4 font-medium">KM Bilgisi</th>
-                    <th className="p-4 font-medium">Yakıt</th>
+                    <th className="p-4 font-medium">Yakıt (Lt)</th>
                     <th className="p-4 font-medium">Durum</th>
                     <th className="p-4 font-medium text-center">İşlem</th>
                   </tr>
@@ -201,10 +201,10 @@ export default function GorevKayitlari() {
                         </td>
                         <td className="p-4">
                           {trip.fuel_purchased ? (
-                            <span className="text-green-600 font-medium">{trip.fuel_cost} TL</span>
-                          ) : (
-                            <span className="text-gray-400 text-xs">Alınmadı</span>
-                          )}
+  <span className="text-green-600 font-medium">{trip.fuel_amount} Lt</span>
+) : (
+  <span className="text-gray-400 text-xs">Alınmadı</span>
+)}
                         </td>
                         <td className="p-4">
                           <span className={`px-2 py-1 rounded-md text-xs font-medium ${trip.status === 'Görevde' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}`}>
