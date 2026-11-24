@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/supabase' // Dosya yolunuz farklıysa (örn: @/lib/supabase) ona göre düzeltin
+import { supabase } from '../../lib/supabase' 
 
 export default function DriverPage() {
   const [user, setUser] = useState<any>(null)
@@ -79,7 +79,7 @@ export default function DriverPage() {
       exit_time: new Date().toISOString(),
       destination: destination,
       exit_km: parseInt(exitKm),
-      task_type: taskType, // Yeni eklenen görev türü
+      task_type: taskType, 
       status: 'Görevde'
     }])
 
@@ -92,21 +92,21 @@ export default function DriverPage() {
   const handleEndTrip = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // KURAL: Dönüş KM, Çıkış KM'den küçük olamaz
-    if (parseInt(returnKm) < activeTrip.exit_km) {
-      return alert(`Hata: Dönüş kilometresi (${returnKm}), çıkış kilometresinden (${activeTrip.exit_km}) küçük olamaz!`)
+    // KURAL: Dönüş KM, Çıkış KM'den küçük olamaz (Boş girilme kontrolü ile birlikte)
+    if (!returnKm || parseInt(returnKm) < activeTrip.exit_km) {
+      return alert(`Hata: Dönüş kilometresi boş olamaz ve çıkış kilometresinden (${activeTrip.exit_km}) küçük olamaz!`)
     }
 
-    // KURAL: Yakıt alındıysa tutar zorunlu
-    if (fuelPurchased === 'Evet' && !fuelCost) {
-      return alert('Lütfen yakıt tutarını giriniz!')
+    // KURAL: Yakıt alındıysa miktar zorunlu (HATA BURADAYDI: fuelCost yerine fuelAmount yazdık)
+    if (fuelPurchased === 'Evet' && !fuelAmount) {
+      return alert('Lütfen yakıt miktarını giriniz!')
     }
     
     const { error } = await supabase.from('trips').update({
       return_time: new Date().toISOString(),
       return_km: parseInt(returnKm),
       fuel_purchased: fuelPurchased === 'Evet',
-fuel_amount: fuelPurchased === 'Evet' ? parseFloat(fuelAmount) : 0,
+      fuel_amount: fuelPurchased === 'Evet' ? parseFloat(fuelAmount) : 0,
       status: 'Döndü'
     }).eq('id', activeTrip.id)
 
@@ -166,9 +166,9 @@ fuel_amount: fuelPurchased === 'Evet' ? parseFloat(fuelAmount) : 0,
                 
                 {fuelPurchased === 'Evet' && (
                   <div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">Yakıt Miktarı (Litre) *</label>
-  <input type="number" step="0.01" required value={fuelAmount} onChange={(e) => setFuelAmount(e.target.value)} className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none" placeholder="Örn: 45.5" />
-</div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Yakıt Miktarı (Litre) *</label>
+                    <input type="number" step="0.01" required value={fuelAmount} onChange={(e) => setFuelAmount(e.target.value)} className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none" placeholder="Örn: 45.5" />
+                  </div>
                 )}
               </div>
 
