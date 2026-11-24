@@ -163,7 +163,7 @@ export default function SuruculerPage() {
             <form onSubmit={handleAddDriver} className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Ad Soyad *</label>
-                <input type="text" required value={fullName} onChange={(e) => setFullName(e.target.value)} className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none" placeholder="Ahmet Yılmaz" />
+                <input type="text" required value={fullName} onChange={(e) => setFullName(e.target.value)} className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none" placeholder="Sürücünün adını ve soyadını giriniz" />
               </div>
 
               <div>
