@@ -23,4 +23,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-```[cite: 1, 6]
