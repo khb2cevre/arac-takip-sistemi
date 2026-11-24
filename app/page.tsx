@@ -28,16 +28,16 @@ export default function LoginPage() {
       return
     }
 
-   // Giriş başarılıysa kullanıcı bilgilerini tarayıcı hafızasına kaydet
-localStorage.setItem('currentUser', JSON.stringify(data))
-console.log("Giriş başarılı, yönlendiriliyor...")
-
-// Rolüne göre yönlendir (basePath adresi manuel eklenmeli)
-if (data.role === 'admin') {
-  window.location.href = '/arac-takip-sistemi/admin'
-} else {
-  window.location.href = '/arac-takip-sistemi/driver'
-}
+      // Giriş başarılıysa kullanıcı bilgilerini tarayıcı hafızasına kaydet
+    localStorage.setItem('currentUser', JSON.stringify(data))
+    console.log("Giriş başarılı, yönlendiriliyor...")
+    
+    // Rolüne göre yönlendir (GitHub Pages basePath uyumlu)
+    if (data.role === 'admin') {
+      window.location.href = '/arac-takip-sistemi/admin'
+    } else {
+      window.location.href = '/arac-takip-sistemi/driver'
+    }
     
     setLoading(false)
   }
